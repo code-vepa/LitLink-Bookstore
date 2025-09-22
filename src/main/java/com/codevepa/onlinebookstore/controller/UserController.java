@@ -1,10 +1,9 @@
 package com.codevepa.onlinebookstore.controller;
-
 import com.codevepa.onlinebookstore.model.Users;
 import com.codevepa.onlinebookstore.service.UserService;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +24,7 @@ public class UserController {
         return service.register(user);
     }
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Users user) {
         return service.verify(user);
     }

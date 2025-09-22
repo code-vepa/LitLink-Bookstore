@@ -37,11 +37,12 @@ public class UserService {
                 Map<String, Object> response = new HashMap<>();
                 response.put("token", token);
                 response.put("message", "Login successful");
-                // Get the role of the user
+
                 Optional<Users> found = repo.findByUsername(user.getUsername());
                 if (found.isPresent()) {
                     String role = found.get().getRole();
-                    return ResponseEntity.ok("Login successful as " + role + " " + response.get("token"));
+                    return ResponseEntity.ok("Login successful as " + role + "\n" +
+                            "Your token: "+ response.get("token"));
                 }
                 return ResponseEntity.ok("Login successful");
             }
